@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[#f7f9f8] text-primary-900 antialiased;
+}
+
+h1, h2, h3, h4 {
+  @apply font-display;
+}
+
+/* Visible keyboard focus everywhere */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #e5b332;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+/* --- 3D scene helpers used by the How It Works / For Agencies / Guide pages --- */
+.scene-3d {
+  perspective: 1400px;
+  perspective-origin: 50% 40%;
+}
+.tilt-left {
+  transform: rotateY(16deg) rotateX(9deg) rotateZ(-2deg);
+  transform-style: preserve-3d;
+}
+.tilt-right {
+  transform: rotateY(-16deg) rotateX(9deg) rotateZ(2deg);
+  transform-style: preserve-3d;
+}
+.tilt-flat {
+  transform: rotateX(12deg);
+  transform-style: preserve-3d;
+}
+.lift-3d {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+}
+.lift-3d:hover {
+  transform: translateY(-6px) rotateX(0deg) rotateY(0deg) scale(1.015);
+  box-shadow: 0 26px 50px -18px rgba(13, 50, 48, 0.45);
+}
+.float-slow {
+  animation: pilgrym-float 7s ease-in-out infinite;
+}
+.float-slower {
+  animation: pilgrym-float 9s ease-in-out infinite;
+  animation-delay: -3s;
+}
+@keyframes pilgrym-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+.glass-panel {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+}
+.text-balance {
+  text-wrap: balance;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg bg-primary-800 px-5 py-2.5 text-sm font-semibold text-white shadow-card transition hover:bg-primary-900 disabled:cursor-not-allowed disabled:opacity-50;
+}
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg border border-primary-800 bg-white px-5 py-2.5 text-sm font-semibold text-primary-800 transition hover:bg-primary-50 disabled:cursor-not-allowed disabled:opacity-50;
+}
+.btn-gold {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg bg-gold-400 px-5 py-2.5 text-sm font-semibold text-primary-900 shadow-card transition hover:bg-gold-500;
+}
+.input-field {
+  @apply w-full rounded-lg border border-primary-100 bg-white px-3 py-2 text-sm text-primary-900 placeholder:text-primary-400/70 focus:border-primary-400 focus:outline-none;
+}
+.card {
+  @apply rounded-2xl border border-primary-100/70 bg-white shadow-card;
+}
+.badge {
+  @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold;
+}
